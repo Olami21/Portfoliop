@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olamide — Web Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#faf8f4;
+  --cream2:#f3f0ea;
+  --ink:#1a1714;
+  --ink2:#4a4540;
+  --ink3:#8a8078;
+  --gold:#b38b3d;
+  --gold2:#c9a45a;
+  --border:#e8e2d8;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(250,248,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;letter-spacing:0.02em;color:var(--ink);text-decoration:none}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.82rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:0.6rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background 0.2s}
+.nav-cta:hover{background:var(--gold)}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:7rem 3rem 4rem;gap:4rem;max-width:1200px;margin:0 auto}
+.hero-text{padding-right:2rem}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;line-height:1.1;letter-spacing:-0.01em;color:var(--ink);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:1rem;line-height:1.8;color:var(--ink2);max-width:420px;margin-bottom:2.5rem;font-weight:300}
+.hero-actions{display:flex;gap:1rem;align-items:center}
+.btn-primary{font-size:0.82rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--cream);background:var(--ink);padding:0.9rem 2rem;border-radius:2rem;text-decoration:none;transition:all 0.25s}
+.btn-primary:hover{background:var(--gold);transform:translateY(-1px)}
+.btn-secondary{font-size:0.82rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink2);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
+.btn-secondary:hover{color:var(--gold)}
+.btn-secondary::after{content:'↓';font-size:1rem}
+
+.hero-image{position:relative;display:flex;justify-content:center}
+.hero-img-wrap{position:relative;width:380px;height:480px}
+.hero-img-bg{position:absolute;inset:1.5rem 0 0 1.5rem;background:var(--cream2);border-radius:2px;border:1px solid var(--border)}
+.hero-img-frame{position:absolute;inset:0 1.5rem 1.5rem 0;background:var(--cream2);border-radius:2px;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-img-frame img{width:100%;height:100%;object-fit:cover}
+.hero-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--cream2) 0%,var(--border) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.75rem}
+.hero-img-placeholder svg{opacity:0.3}
+.hero-img-placeholder p{font-size:0.75rem;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase}
+.hero-badge{position:absolute;bottom:-1rem;left:-1rem;background:var(--ink);color:var(--cream);padding:1rem 1.25rem;border-radius:2px;min-width:140px}
+.hero-badge-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;line-height:1;color:var(--gold)}
+.hero-badge-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);opacity:0.7;margin-top:0.2rem}
+
+/* MARQUEE */
+.marquee-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;overflow:hidden;background:var(--cream2);margin:2rem 0}
+.marquee-track{display:flex;gap:3rem;white-space:nowrap;animation:marquee 18s linear infinite}
+.marquee-item{font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:3rem}
+.marquee-item::after{content:'✦';color:var(--gold);font-size:0.6rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ABOUT */
+.section{padding:6rem 3rem;max-width:1200px;margin:0 auto}
+.section-label{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:flex;align-items:center;gap:0.75rem}
+.section-label::before{content:'';display:block;width:2rem;height:1px;background:var(--gold)}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+.about-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.2;color:var(--ink)}
+.about-title em{font-style:italic;color:var(--gold)}
+.about-body p{font-size:0.95rem;line-height:1.9;color:var(--ink2);font-weight:300;margin-bottom:1.25rem}
+.skills-row{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem}
+.skill-tag{font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 0.9rem;border:1px solid var(--border);border-radius:2rem;color:var(--ink2);background:transparent}
+
+/* WORK */
+.work-section{padding:6rem 0;background:var(--cream2)}
+.work-inner{max-width:1200px;margin:0 auto;padding:0 3rem}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3rem}
+.project-card{position:relative;background:var(--cream);overflow:hidden;cursor:pointer;group:true}
+.project-card:nth-child(1){grid-column:1/3}
+.project-img{height:420px;background:var(--cream2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:transform 0.5s ease}
+.project-card:nth-child(1) .project-img{height:520px}
+.project-img-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:var(--border);letter-spacing:-0.02em;transition:transform 0.5s ease}
+.project-card:hover .project-img-inner{transform:scale(1.03)}
+.p1{background:linear-gradient(135deg,#1a1714 0%,#2d2a26 100%)}
+.p1 .project-img-inner{color:rgba(179,139,61,0.3);font-size:6rem}
+.p2{background:linear-gradient(135deg,#f0ece4 0%,#e8e2d8 100%)}
+.p2 .project-img-inner{color:rgba(26,23,20,0.15)}
+.p3{background:linear-gradient(135deg,#1c2b3a 0%,#2a3f55 100%)}
+.p3 .project-img-inner{color:rgba(255,255,255,0.1)}
+.p4{background:linear-gradient(135deg,#f5f0e8 0%,#ede6d8 100%)}
+.p4 .project-img-inner{color:rgba(26,23,20,0.12)}
+.p5{background:linear-gradient(135deg,#0a1628 0%,#1a2d4a 100%)}
+.p5 .project-img-inner{color:rgba(179,139,61,0.2)}
+.project-info{padding:1.75rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.project-meta{}
+.project-cat{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem}
+.project-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--ink)}
+.project-arrow{width:2.5rem;height:2.5rem;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink3);transition:all 0.25s;font-size:1rem;text-decoration:none}
+.project-card:hover .project-arrow{background:var(--ink);border-color:var(--ink);color:var(--cream);transform:rotate(-45deg)}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.service-card{padding:2.5rem 2rem;border:1px solid var(--border);border-radius:2px;transition:border-color 0.25s,transform 0.25s}
+.service-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--border);line-height:1;margin-bottom:1.25rem}
+.service-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.75rem}
+.service-desc{font-size:0.85rem;line-height:1.8;color:var(--ink2);font-weight:300}
+
+/* CONTACT */
+.contact-section{padding:8rem 3rem;background:var(--ink);text-align:center}
+.contact-eyebrow{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:1.25rem}
+.contact-title em{font-style:italic;color:var(--gold)}
+.contact-sub{font-size:0.95rem;color:rgba(250,248,244,0.5);font-weight:300;margin-bottom:3rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.8}
+.contact-email{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:300;color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(179,139,61,0.4);padding-bottom:0.25rem;transition:border-color 0.2s;display:inline-block;margin-bottom:3rem}
+.contact-email:hover{border-color:var(--gold);color:var(--gold2)}
+.contact-socials{display:flex;gap:1.5rem;justify-content:center}
+.social-link{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,248,244,0.4);text-decoration:none;transition:color 0.2s}
+.social-link:hover{color:var(--gold)}
+
+/* FOOTER */
+footer{padding:1.5rem 3rem;border-top:1px solid rgba(250,248,244,0.08);background:var(--ink);display:flex;justify-content:space-between;align-items:center}
+footer p{font-size:0.72rem;color:rgba(250,248,244,0.3);letter-spacing:0.06em}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(250,248,244,0.4)}
+.footer-logo span{color:var(--gold)}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-up:nth-child(2){transition-delay:0.1s}
+.fade-up:nth-child(3){transition-delay:0.2s}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:3rem}
+  .hero-image{display:none}
+  .about-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+  .project-card:nth-child(1){grid-column:1}
+  .services-grid{grid-template-columns:1fr}
+  .section{padding:4rem 1.5rem}
+  .contact-section{padding:5rem 1.5rem}
+  footer{padding:1.25rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Olamide<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's talk</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Available for projects</div>
+    <h1 class="hero-title">Websites that <em>win</em> clients for your business</h1>
+    <p class="hero-desc">I design and build premium websites for businesses that want to look as good online as they are in real life — fast, beautiful, and built to convert.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View my work</a>
+      <a href="#contact" class="btn-secondary">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-wrap">
+      <div class="hero-img-bg"></div>
+      <div class="hero-img-frame">
+        <div class="hero-img-placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#8a8078" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          <p>Your photo here</p>
+        </div>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-num">5+</div>
+        <div class="hero-badge-label">Projects delivered</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Web Design</span>
+    <span class="marquee-item">WooCommerce Development</span>
+    <span class="marquee-item">Landing Pages</span>
+    <span class="marquee-item">E-Commerce</span>
+    <span class="marquee-item">WordPress</span>
+    <span class="marquee-item">UI Design</span>
+    <span class="marquee-item">Brand Identity</span>
+    <span class="marquee-item">Web Design</span>
+    <span class="marquee-item">WooCommerce Development</span>
+    <span class="marquee-item">Landing Pages</span>
+    <span class="marquee-item">E-Commerce</span>
+    <span class="marquee-item">WordPress</span>
+    <span class="marquee-item">UI Design</span>
+    <span class="marquee-item">Brand Identity</span>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="work-section" id="work">
+  <div class="work-inner">
+    <div class="section-label">Selected work</div>
+    <div class="work-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-img p1">
+          <div class="project-img-inner">ScentsbyBeeBee</div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="project-cat">E-Commerce · WooCommerce</div>
+            <div class="project-name">ScentsbyBeeBee</div>
+          </div>
+          <a href="https://scentsbybeebee.com" target="_blank" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-img p2">
+          <div class="project-img-inner">Blueprint 2</div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="project-cat">Education · Consulting</div>
+            <div class="project-name">Blueprint 2 Admissions</div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-img p3">
+          <div class="project-img-inner">HARC</div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="project-cat">Nonprofit · Literacy</div>
+            <div class="project-name">HARC Initiative</div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-img p4">
+          <div class="project-img-inner">Boxes</div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="project-cat">Arts · Culture</div>
+            <div class="project-name">Boxes Alcultura</div>
+          </div>
+          <a href="#" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="grid-column:1/3">
+        <div class="project-img p5" style="height:380px">
+          <div class="project-img-inner">Relec</div>
+        </div>
+        <div class="project-info">
+          <div class="project-meta">
+            <div class="project-cat">Electrical · Services</div>
+            <div class="project-name">Relec UK</div>
+          </div>
+          <a href="https://www.relec.co.uk" target="_blank" class="project-arrow">↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-label">What I do</div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <div class="service-title">Website Design & Build</div>
+      <p class="service-desc">Custom websites built from scratch — fast, responsive, and tailored to your brand. HTML/CSS or WordPress.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">02</div>
+      <div class="service-title">E-Commerce Development</div>
+      <p class="service-desc">WooCommerce stores with polished product pages, smooth checkout, and everything ready to sell.</p>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">03</div>
+      <div class="service-title">Website Redesign</div>
+      <p class="service-desc">Turn your outdated website into something modern and premium that your clients will trust immediately.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about" style="border-top:1px solid var(--border)">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <h2 class="about-title">Building the <em>web</em> from West Africa</h2>
+    </div>
+    <div class="about-body">
+      <p>I'm Olamide, a web designer and developer based in Nigeria. I work with businesses across the US, UK, and beyond — helping them build websites that are beautiful, fast, and actually bring in clients.</p>
+      <p>Every project I take on gets my full attention — from the first design concept to the final launch. I care about the details that make the difference between a site that looks good and one that performs.</p>
+      <div class="skills-row">
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">WordPress</span>
+        <span class="skill-tag">WooCommerce</span>
+        <span class="skill-tag">Elementor</span>
+        <span class="skill-tag">UI Design</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">React</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-eyebrow">Get in touch</div>
+  <h2 class="contact-title">Let's build something <em>great</em> together</h2>
+  <p class="contact-sub">Have a project in mind? Send me an email and I'll get back to you within 24 hours.</p>
+  <a href="mailto:your@email.com" class="contact-email">your@email.com</a>
+  <div class="contact-socials">
+    <a href="#" class="social-link">LinkedIn</a>
+    <a href="#" class="social-link">Twitter / X</a>
+    <a href="#" class="social-link">WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Olamide. All rights reserved.</p>
+  <div class="footer-logo">Olamide<span>.</span></div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold: 0.1});
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
